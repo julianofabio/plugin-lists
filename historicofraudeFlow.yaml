@@ -1,0 +1,21 @@
+id: historicofraudeFlow
+namespace: company.team
+
+tasks:
+  - id: hello
+    type: io.kestra.plugin.core.log.Log
+    message: Hello World! 🚀
+    
+  - id: historicofraude
+    type: io.kestra.plugin.overscore.lists.HistoricoFraude
+    cpf: "65456456"
+    idCredito: "23123213"
+    registrarHistorico: false
+
+  - id: HistoricoFraudeOut
+    type: io.kestra.plugin.core.log.Log
+    message: |
+      - "{{ outputs.historicofraude.dataExpiracao }}"
+      - "{{ outputs.historicofraude.saida}}"
+      - "{{ outputs.historicofraude.fraudeList}}"
+    
